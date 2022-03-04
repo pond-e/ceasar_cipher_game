@@ -26,6 +26,12 @@ void Main()
 	// テキストを画面にデバッグ出力 | Print a text
 	Print << U"Push [A] key";
 
+	// Ceasar cipher problem
+	Print << U"例：";
+	Print << U"問題：いきすさえそあふらえさた！";
+	Print << U"答え：あかしこうせんへようこそ！";
+
+
 	while (System::Update())
 	{
 		// テクスチャを描く | Draw a texture
@@ -37,6 +43,9 @@ void Main()
 		// サイズをアニメーションさせて絵文字を描く | Draw a texture with animated size
 		emoji.resized(100 + Periodic::Sine0_1(1s) * 20).drawAt(emojiPos);
 
+		// 中心座標 (400, 300), 半径 20 の円を描く
+		Circle(400, 300, 60).draw(ColorF{ 1, 1, 0, 1 });
+
 		// マウスカーソルに追随する半透明な円を描く | Draw a red transparent circle that follows the mouse cursor
 		Circle{ Cursor::Pos(), 40 }.draw(ColorF{ 1, 0, 0, 0.5 });
 
@@ -47,6 +56,8 @@ void Main()
 			Print << Sample({ U"Hello!", U"こんにちは", U"你好", U"안녕하세요?" });
 		}
 
+		
+
 		// もし [Button] が押されたら | When [Button] is pushed
 		if (SimpleGUI::Button(U"Button", Vec2{ 640, 40 }))
 		{
@@ -54,6 +65,7 @@ void Main()
 			// Move the coordinates to a random position in the screen
 			emojiPos = RandomVec2(Scene::Rect());
 		}
+		
 	}
 }
 
