@@ -78,11 +78,11 @@ void Main()
 	// ストップウォッチ（作成と同時に計測開始）
 	Stopwatch stopwatch{ StartImmediately::Yes };
 
+	constexpr size_t PasswordDigits = 1;
+	Array<uint32> inputs(PasswordDigits);
+
 	while (System::Update())
 	{
-		constexpr size_t PasswordDigits = 6;
-		Array<uint32> inputs(PasswordDigits);
-
 		// 中心座標 (400, 300), 半径 20 の円を描く
 		Circle(400, 300, 60).draw(ColorF{ 1, 1, 0, 1 });
 
@@ -108,10 +108,12 @@ void Main()
 
 		Circle{ Scene::Center(), (t * 50) }.draw(ColorF{ 0.25 });
 
-
-		const Vec2 pos{ 120 + 0 * 210, 460 };
-		UpdateDial(dialFont, pos, inputs[0]);
-		
+		const Array<uint32> old = inputs;
+		for (auto i : step(PasswordDigits))
+		{
+			const Vec2 pos{ 120 + i * 210, 460 };
+			UpdateDial(dialFont, pos, inputs[i]);
+		}
 	}
 }
 
