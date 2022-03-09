@@ -62,6 +62,279 @@ void UpdateDial(const Font& font, const Vec2& pos, uint32& value)
 	}
 }
 
+String ceasar(int slide, String word) {
+	int i, j, count = 0;
+	const String boin = U"aiueo";
+	while (word[count]) {
+		count++;
+	}
+	for (i = 0; i < count; i++) {
+		if (word[i] == 'a' || word[i] == 'i' || word[i] == 'u' || word[i] == 'e' || word[i] == 'o') {
+			for (j = 0; j < 5; j++) {
+				if (word[i] == boin[j]) {
+					word[i] = boin[(j + slide) % 5];
+					break;
+				}
+			}
+		}
+	}
+	return word;
+}
+
+String table_romaji_to_kana(String romaji) {
+	String kana;
+	if (romaji == U"a") {
+		kana = U"あ";
+	}
+	else if (romaji == U"i") {
+		kana = U"い";
+	}
+	else if (romaji == U"u") {
+		kana = U"う";
+	}
+	else if (romaji == U"e") {
+		kana = U"え";
+	}
+	else if (romaji == U"o") {
+		kana = U"お";
+	}
+	else if (romaji == U"ka") {
+		kana = U"か";
+	}
+	else if (romaji == U"ki") {
+		kana = U"き";
+	}
+	else if (romaji == U"ku") {
+		kana = U"く";
+	}
+	else if (romaji == U"ke") {
+		kana = U"け";
+	}
+	else if (romaji == U"ko") {
+		kana = U"こ";
+	}
+	else if (romaji == U"sa") {
+		kana = U"さ";
+	}
+	else if (romaji == U"si") {
+		kana = U"し";
+	}
+	else if (romaji == U"su") {
+		kana = U"す";
+	}
+	else if (romaji == U"se") {
+		kana = U"せ";
+	}
+	else if (romaji == U"so") {
+		kana = U"そ";
+	}
+	else if (romaji == U"ta") {
+		kana = U"た";
+	}
+	else if (romaji == U"ti") {
+		kana = U"ち";
+	}
+	else if (romaji == U"tu") {
+		kana = U"つ";
+	}
+	else if (romaji == U"te") {
+		kana = U"て";
+	}
+	else if (romaji == U"to") {
+		kana = U"と";
+	}
+	else if (romaji == U"na") {
+		kana = U"な";
+	}
+	else if (romaji == U"ni") {
+		kana = U"に";
+	}
+	else if (romaji == U"nu") {
+		kana = U"ぬ";
+	}
+	else if (romaji == U"ne") {
+		kana = U"ね";
+	}
+	else if (romaji == U"no") {
+		kana = U"の";
+	}
+	else if (romaji == U"ha") {
+		kana = U"は";
+	}
+	else if (romaji == U"hi") {
+		kana = U"ひ";
+	}
+	else if (romaji == U"hu") {
+		kana = U"ふ";
+	}
+	else if (romaji == U"he") {
+		kana = U"へ";
+	}
+	else if (romaji == U"ho") {
+		kana = U"ほ";
+	}
+	else if (romaji == U"ma") {
+		kana = U"ま";
+	}
+	else if (romaji == U"mi") {
+		kana = U"み";
+	}
+	else if (romaji == U"mu") {
+		kana = U"む";
+	}
+	else if (romaji == U"me") {
+		kana = U"め";
+	}
+	else if (romaji == U"mo") {
+		kana = U"も";
+	}
+	else if (romaji == U"ya") {
+		kana = U"や";
+	}
+	else if (romaji == U"yu") {
+		kana = U"ゆ";
+	}
+	else if (romaji == U"yo") {
+		kana = U"よ";
+	}
+	else if (romaji == U"ra") {
+		kana = U"ら";
+	}
+	else if (romaji == U"ri") {
+		kana = U"り";
+	}
+	else if (romaji == U"ru") {
+		kana = U"る";
+	}
+	else if (romaji == U"re") {
+		kana = U"れ";
+	}
+	else if (romaji == U"ro") {
+		kana = U"ろ";
+	}
+	else if (romaji == U"wa") {
+		kana = U"わ";
+	}
+	else if (romaji == U"wi") {
+		kana = U"い";
+	}
+	else if (romaji == U"wu") {
+		kana = U"う";
+	}
+	else if (romaji == U"we") {
+		kana = U"え";
+	}
+	else if (romaji == U"wo") {
+		kana = U"を";
+	}
+	else if (romaji == U"ga") {
+		kana = U"が";
+	}
+	else if (romaji == U"gi") {
+		kana = U"ぎ";
+	}
+	else if (romaji == U"gu") {
+		kana = U"ぐ";
+	}
+	else if (romaji == U"ge") {
+		kana = U"げ";
+	}
+	else if (romaji == U"go") {
+		kana = U"ご";
+	}
+	else if (romaji == U"za") {
+		kana = U"ざ";
+	}
+	else if (romaji == U"zi") {
+		kana = U"じ";
+	}
+	else if (romaji == U"zu") {
+		kana = U"ず";
+	}
+	else if (romaji == U"ze") {
+		kana = U"ぞ";
+	}
+	else if (romaji == U"da") {
+		kana = U"だ";
+	}
+	else if (romaji == U"di") {
+		kana = U"ぢ";
+	}
+	else if (romaji == U"du") {
+		kana = U"づ";
+	}
+	else if (romaji == U"de") {
+		kana = U"で";
+	}
+	else if (romaji == U"do") {
+		kana = U"ど";
+	}
+	else if (romaji == U"ba") {
+		kana = U"ば";
+	}
+	else if (romaji == U"bi") {
+		kana = U"び";
+	}
+	else if (romaji == U"bu") {
+		kana = U"ぶ";
+	}
+	else if (romaji == U"be") {
+		kana = U"べ";
+	}
+	else if (romaji == U"bo") {
+		kana = U"ぼ";
+	}
+	else if (romaji == U"pa") {
+		kana = U"ぱ";
+	}
+	else if (romaji == U"pi") {
+		kana = U"ぴ";
+	}
+	else if (romaji == U"pu") {
+		kana = U"ぷ";
+	}
+	else if (romaji == U"pe") {
+		kana = U"ぺ";
+	}
+	else if (romaji == U"po") {
+		kana = U"ぽ";
+	}
+	else if (romaji == U"ltu") {
+		kana = U"っ";
+	}
+	else if (romaji == U"lya") {
+		kana = U"ゃ";
+	}
+	else if (romaji == U"lyu") {
+		kana = U"ゅ";
+	}
+	else if (romaji == U"lyo") {
+		kana = U"ょ";
+	}
+	else {
+		kana = U"ん";
+	}
+
+	return kana;
+}
+
+String romaji_to_kana(String romaji) {
+	String kana;
+	String tmp;
+	const int len_romaji = romaji.size();
+	for (int i = 0; i < len_romaji; i++) {
+		tmp << romaji[i];
+		if (i != 0 && romaji[i - 1] == 'n' && romaji[i] == 'n') {
+			kana += table_romaji_to_kana(tmp);
+			tmp.clear();
+		}
+		else if (romaji[i] == 'a' || romaji[i] == 'i' || romaji[i] == 'u' || romaji[i] == 'e' || romaji[i] == 'o') {
+			kana += table_romaji_to_kana(tmp);
+			tmp.clear();
+		}
+	}
+	return kana;
+}
 
 void Main()
 {
@@ -76,8 +349,21 @@ void Main()
 	Print << U"問題：いきすさえそあふらえさた！";
 	Print << U"答え：あかしこうせんへようこそ！";
 
+	//int slide = 1;
+	int i = 0;
+	//Print << U"かけきつせん";
+	//const String words = U"kakekitusenn";
+	//const String reword = romaji_to_kana(ceasar(slide, words));
+	//Print << reword;
+
+	Print << U"";
+	Print << U"きろあびに";
+	String kare = U"kiroabini";
+	Print << U"答え：かれおばな";
+	String rekare;
+
 	constexpr size_t PasswordDigits = 1;
-	Array<uint32> inputs(PasswordDigits);
+	Array<uint32> inputs(PasswordDigits); // inputsにはダイヤルの数字が入る
 
 	while (System::Update())
 	{
@@ -92,6 +378,9 @@ void Main()
 		{
 			const Vec2 pos{ 400, 460 };
 			UpdateDial(dialFont, pos, inputs[i]);
+			rekare = romaji_to_kana(ceasar(inputs[i], kare));
+			dialFont(rekare).drawAt(Scene::Center(), Palette::Black);
+
 		}
 	}
 }
