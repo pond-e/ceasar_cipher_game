@@ -71,12 +71,10 @@ void Main()
 	const Font dialFont{ 18, Typeface::CJK_Regular_JP, FontStyle::Bold };
 
 	// Ceasar cipher problem
-	Print << U"例：";
+	Print << U"暗号を解いてみよう！";
+	Print << U"例↓";
 	Print << U"問題：いきすさえそあふらえさた！";
 	Print << U"答え：あかしこうせんへようこそ！";
-
-	// ストップウォッチ（作成と同時に計測開始）
-	Stopwatch stopwatch{ StartImmediately::Yes };
 
 	constexpr size_t PasswordDigits = 1;
 	Array<uint32> inputs(PasswordDigits);
@@ -89,29 +87,10 @@ void Main()
 		// マウスカーソルに追随する半透明な円を描く | Draw a red transparent circle that follows the mouse cursor
 		Circle{ Cursor::Pos(), 40 }.draw(ColorF{ 1, 0, 0, 0.5 });
 
-		// もし [A] キーが押されたら | When [A] key is down
-		if (KeyA.down())
-		{
-			// 選択肢からランダムに選ばれたメッセージをデバッグ表示 | Print a randomly selected text
-			Print << Sample({ U"Hello!", U"こんにちは", U"你好", U"안녕하세요?" });
-		}
-
-		// もし左クリックされたら
-		if (MouseL.down())
-		{
-			// ストップウォッチをリセットして再び 0 から計測
-			stopwatch.restart();
-		}
-
-		// ストップウォッチの経過時間（秒）を double 型で取得 
-		const double t = stopwatch.sF();
-
-		Circle{ Scene::Center(), (t * 50) }.draw(ColorF{ 0.25 });
-
 		const Array<uint32> old = inputs;
 		for (auto i : step(PasswordDigits))
 		{
-			const Vec2 pos{ 120 + i * 210, 460 };
+			const Vec2 pos{ 400, 460 };
 			UpdateDial(dialFont, pos, inputs[i]);
 		}
 	}
