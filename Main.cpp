@@ -1,4 +1,4 @@
-﻿# include <Siv3D.hpp> // OpenSiv3D v0.6.3
+# include <Siv3D.hpp> // OpenSiv3D v0.6.3
 
 void UpdateDial(const Font& font, const Vec2& pos, uint32& value)
 {
@@ -191,8 +191,14 @@ String table_romaji_to_kana(String romaji) {
 	else if (romaji == U"ya") {
 		kana = U"や";
 	}
+	else if (romaji == U"yi") {
+		kana = U"い";
+	}
 	else if (romaji == U"yu") {
 		kana = U"ゆ";
+	}
+	else if (romaji == U"ye") {
+		kana = U"え";
 	}
 	else if (romaji == U"yo") {
 		kana = U"よ";
@@ -328,6 +334,10 @@ String romaji_to_kana(String romaji) {
 			kana += table_romaji_to_kana(tmp);
 			tmp.clear();
 		}
+		else if (romaji[i] == ' ') {
+			kana += U" ";
+			tmp.clear();
+		}
 		else if (romaji[i] == 'a' || romaji[i] == 'i' || romaji[i] == 'u' || romaji[i] == 'e' || romaji[i] == 'o') {
 			kana += table_romaji_to_kana(tmp);
 			tmp.clear();
@@ -339,7 +349,7 @@ String romaji_to_kana(String romaji) {
 void Main()
 {
 	// 背景の色を設定 | Set background color
-	Scene::SetBackground(ColorF{ 0.8, 0.9, 1.0 });
+	Scene::SetBackground(ColorF{ 0.9, 0.59, 0.48 });
 
 	const Font dialFont{ 18, Typeface::CJK_Regular_JP, FontStyle::Bold };
 
@@ -357,18 +367,16 @@ void Main()
 	//Print << reword;
 
 	Print << U"";
-	Print << U"きろあびに";
-	String kare = U"kiroabini";
-	Print << U"答え：かれおばな";
+	Print << U"ええろうな　すゃえちうむちる　きろあびに";
+	String kare = U"yeerouna sulyaetiumutiru kiroabini";
+	//Print << U"答え：ゆうれいの　しょうたいみたり　かれおばな";
 	String rekare;
 
 	constexpr size_t PasswordDigits = 1;
 	Array<uint32> inputs(PasswordDigits); // inputsにはダイヤルの数字が入る
-
+	
 	while (System::Update())
 	{
-		// 中心座標 (400, 300), 半径 20 の円を描く
-		Circle(400, 300, 60).draw(ColorF{ 1, 1, 0, 1 });
 
 		// マウスカーソルに追随する半透明な円を描く | Draw a red transparent circle that follows the mouse cursor
 		Circle{ Cursor::Pos(), 40 }.draw(ColorF{ 1, 0, 0, 0.5 });
@@ -379,7 +387,7 @@ void Main()
 			const Vec2 pos{ 400, 460 };
 			UpdateDial(dialFont, pos, inputs[i]);
 			rekare = romaji_to_kana(ceasar(inputs[i], kare));
-			dialFont(rekare).drawAt(Scene::Center(), Palette::Black);
+			dialFont(rekare).drawAt( 400, 300, Palette::Black);
 
 		}
 	}
